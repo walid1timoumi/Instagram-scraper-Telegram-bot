@@ -1,11 +1,12 @@
 import re
 import json
 import time
+from shutil import which
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from config.settings import CHROME_PATH, CHROMEDRIVER_PATH, COOKIES_PATH
+from config.settings import COOKIES_PATH
 
 def is_valid_username(username: str) -> bool:
     return bool(re.match(r'^[a-zA-Z0-9._]{1,30}$', username))
@@ -23,11 +24,10 @@ def scrape_instagram(username):
 
     options = Options()
     options.headless = True
-    options.binary_location = CHROME_PATH
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
 
-    service = Service(executable_path=CHROMEDRIVER_PATH)
+    service = Service(which("chromedriver"))
     driver = webdriver.Chrome(service=service, options=options)
 
     try:
