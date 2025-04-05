@@ -1,4 +1,7 @@
+import os
 
-CHROME_PATH = "C:/Program Files/chrome-win64/chrome.exe"
-CHROMEDRIVER_PATH = "D:/work/instagramebot/chromedriver.exe"
-COOKIES_PATH = "D:/work/instagramebot/instagram_cookies.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+CHROMEDRIVER_PATH = "chromedriver"  # If it's in the root or in PATH
+CHROME_PATH = "/usr/bin/chromium"   # Optional, can be removed if not used
+COOKIES_PATH = os.path.join(BASE_DIR, "..", "instagram_cookies.json")
