@@ -97,13 +97,13 @@ def scrape_instagram(username):
             time.sleep(3)
 
             try:
-                img = driver.find_element(By.XPATH, "//img[contains(@class, 'x5yr21d')]")
-                image_url = img.get_attribute("src")
+                img = driver.find_element(By.XPATH, "//article//img")
+                image_url = img.getAttribute("src")
             except:
                 image_url = None
 
             try:
-                caption = driver.find_element(By.XPATH, "//h1[contains(@class, '_ap3a')]").text
+                caption = driver.find_element(By.XPATH, "//div[contains(@class, '_a9zs')]/span").text
             except:
                 caption = "No caption"
 
